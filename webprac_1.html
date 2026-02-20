@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Chess Board</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        background: linear-gradient(135deg,#1e3c72,#2a5298);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        min-height:100vh;
+        color:white;
+    }
+
+    header{
+        padding:20px;
+        font-size:28px;
+        font-weight:bold;
+        letter-spacing:2px;
+    }
+
+    .container{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex:1;
+        width:100%;
+        padding:20px;
+    }
+
+    .chess-board{
+        display:flex;
+        flex-wrap:wrap;
+        width:480px;
+        height:480px;
+        border:8px solid #222;
+        box-shadow:0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .square{
+        width:12.5%;
+        height:12.5%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:32px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .white{
+        background:#f0d9b5;
+    }
+
+    .black{
+        background:#b58863;
+    }
+
+    .square:hover{
+        background:#ffeb3b;
+        transform:scale(1.05);
+    }
+
+    footer{
+        padding:15px;
+        font-size:14px;
+        opacity:0.8;
+    }
+
+    /* Responsive */
+    @media(max-width:600px){
+        .chess-board{
+            width:90vw;
+            height:90vw;
+        }
+
+        .square{
+            font-size:20px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header style="font-family: 'Times New Roman', Times, serif;"> My Chess Website </header>
+
+<div class="container">
+    <div class="chess-board">
+       
+        <div class="square white">♜</div>
+        <div class="square black">♞</div>
+        <div class="square white">♝</div>
+        <div class="square black">♛</div>
+        <div class="square white">♚</div>
+        <div class="square black">♝</div>
+        <div class="square white">♞</div>
+        <div class="square black">♜</div>
+
+        
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+
+        
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+
+      
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+
+        
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+        <div class="square black"></div>
+        <div class="square white"></div>
+
+        <div class="square white">♙</div>
+        <div class="square black">♙</div>
+        <div class="square white">♙</div>
+        <div class="square black">♙</div>
+        <div class="square white">♙</div>
+        <div class="square black">♙</div>
+        <div class="square white">♙</div>
+        <div class="square black">♙</div>
+
+        
+        <div class="square black">♖</div>
+        <div class="square white">♘</div>
+        <div class="square black">♗</div>
+        <div class="square white">♕</div>
+        <div class="square black">♔</div>
+        <div class="square white">♗</div>
+        <div class="square black">♘</div>
+        <div class="square white">♖</div>
+
+    </div>
+</div>
+<div background-color="#f0d9b5" class="container">
+    <p>Welcome to my chess website! Here you can find resources, tutorials, and play against other chess enthusiasts. Whether you're a beginner or a grandmaster, there's something for everyone. Explore the world of chess and improve your skills!</p>
+</div>
+
+<footer>Created with ❤️ using HTML, CSS & Flexbox</footer>
+
+</body>
+</html>
