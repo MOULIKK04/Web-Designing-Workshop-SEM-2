@@ -1,0 +1,107 @@
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Largest number finder: enter 5 numbers to find the biggest one</h2>
+
+<div style="max-width:480px;margin:0 auto;padding:2rem 1rem;">
+  <p style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin:0 0 0.25rem;">Largest number finder</p>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.75rem;">Enter 5 numbers and find the largest using if-else logic</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+    <div>
+      <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:4px;">Number 1</label>
+      <input type="number" id="n1" placeholder="e.g. 42" style="width:100%;box-sizing:border-box;">
+    </div>
+    <div>
+      <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:4px;">Number 2</label>
+      <input type="number" id="n2" placeholder="e.g. 17" style="width:100%;box-sizing:border-box;">
+    </div>
+    <div>
+      <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:4px;">Number 3</label>
+      <input type="number" id="n3" placeholder="e.g. 99" style="width:100%;box-sizing:border-box;">
+    </div>
+    <div>
+      <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:4px;">Number 4</label>
+      <input type="number" id="n4" placeholder="e.g. 5" style="width:100%;box-sizing:border-box;">
+    </div>
+    <div style="grid-column:span 2;">
+      <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:4px;">Number 5</label>
+      <input type="number" id="n5" placeholder="e.g. 73" style="width:100%;box-sizing:border-box;">
+    </div>
+  </div>
+
+  <button onclick="findLargest()" style="width:100%;padding:10px;margin-bottom:1.5rem;cursor:pointer;">Find largest number</button>
+
+  <div id="result-box" style="display:none;">
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;">
+      <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 4px;">The largest number is</p>
+      <p id="result-num" style="font-size:36px;font-weight:500;color:var(--color-text-primary);margin:0;"></p>
+    </div>
+
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;">
+      <p style="font-size:13px;font-weight:500;color:var(--color-text-secondary);margin:0 0 10px;">If-else logic trace</p>
+      <div id="trace" style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-secondary);line-height:1.9;"></div>
+    </div>
+  </div>
+
+  <div id="error-box" style="display:none;background:var(--color-background-danger);border:0.5px solid var(--color-border-danger);border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;color:var(--color-text-danger);"></div>
+</div>
+
+<script>
+function findLargest() {
+  const ids = ['n1','n2','n3','n4','n5'];
+  const errBox = document.getElementById('error-box');
+  const resBox = document.getElementById('result-box');
+  errBox.style.display = 'none';
+  resBox.style.display = 'none';
+
+  const vals = ids.map(id => document.getElementById(id).value.trim());
+
+  if (vals.some(v => v === '')) {
+    errBox.textContent = 'Please enter all 5 numbers before continuing.';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  const nums = vals.map(Number);
+  if (nums.some(isNaN)) {
+    errBox.textContent = 'All inputs must be valid numbers.';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  const [a, b, c, d, e] = nums;
+  let largest;
+  let steps = [];
+
+  if (a >= b && a >= c && a >= d && a >= e) {
+    largest = a;
+    steps.push(`<span style="color:var(--color-text-success)">✓ if</span>  n1 (${a}) ≥ n2, n3, n4, n5  → <strong>n1 is largest</strong>`);
+  } else if (b >= a && b >= c && b >= d && b >= e) {
+    largest = b;
+    steps.push(`<span style="color:var(--color-text-secondary)">✗ if</span>  n1 (${a}) not the largest`);
+    steps.push(`<span style="color:var(--color-text-success)">✓ else if</span>  n2 (${b}) ≥ n1, n3, n4, n5  → <strong>n2 is largest</strong>`);
+  } else if (c >= a && c >= b && c >= d && c >= e) {
+    largest = c;
+    steps.push(`<span style="color:var(--color-text-secondary)">✗ if</span>  n1 (${a}) not the largest`);
+    steps.push(`<span style="color:var(--color-text-secondary)">✗ else if</span>  n2 (${b}) not the largest`);
+    steps.push(`<span style="color:var(--color-text-success)">✓ else if</span>  n3 (${c}) ≥ rest  → <strong>n3 is largest</strong>`);
+  } else if (d >= a && d >= b && d >= c && d >= e) {
+    largest = d;
+    steps.push(`<span style="color:var(--color-text-secondary)">✗ if</span>  n1 (${a}) not the largest`);
+    steps.push(`<span style="color:var(--color-text-secondary)">✗ else if</span>  n2 (${b}) not the largest`);
+    steps.push(`<span style="color:var(--color-text-secondary)">✗ else if</span>  n3 (${c}) not the largest`);
+    steps.push(`<span style="color:var(--color-text-success)">✓ else if</span>  n4 (${d}) ≥ rest  → <strong>n4 is largest</strong>`);
+  } else {
+    largest = e;
+    steps.push(`<span style="color:var(--color-text-secondary)">✗ if</span>  n1–n4 all checked, none is largest`);
+    steps.push(`<span style="color:var(--color-text-success)">✓ else</span>   n5 (${e}) is the remaining candidate  → <strong>n5 is largest</strong>`);
+  }
+
+  document.getElementById('result-num').textContent = largest;
+  document.getElementById('trace').innerHTML = steps.map(s => `<div>${s}</div>`).join('');
+  resBox.style.display = 'block';
+}
+
+document.querySelectorAll('input[type="number"]').forEach(input => {
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') findLargest(); });
+});
+</script>
